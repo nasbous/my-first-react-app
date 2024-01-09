@@ -1,4 +1,7 @@
-function PokemonCard({ pokemon }) {
+function PokemonCard(props) {
+    console.log(props);
+    const { pokemon } = props;
+    
     return (
       <figure className="card">
         {pokemon.imgSrc ? (
