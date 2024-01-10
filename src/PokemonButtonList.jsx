@@ -9,21 +9,51 @@ const PokemonButtonList = () => {
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
     },
     {
+      name: "charmander",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+    },
+    {
+      name: "squirtle",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+    },
+    {
+      name: "pikachu",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    },
+    {
       name: "mew",
     },
   ];
 
-  const [selectedPokemon, setSelectedPokemon] = useState(pokemonList[0]);
+  const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  const handleButtonClick = (pokemon) => {
-    setSelectedPokemon(pokemon);
+  const handleNext = () => {
+    setPokemonIndex((prevIndex) => (prevIndex + 1) % pokemonList.length);
+  };
+
+  const handlePrevious = () => {
+    setPokemonIndex((prevIndex) =>
+      prevIndex === 0 ? pokemonList.length - 1 : prevIndex - 1
+    );
   };
 
   return (
     <div>
-      <button onClick={() => handleButtonClick(pokemonList[0])}>Bulbasaur</button>
-      <button onClick={() => handleButtonClick(pokemonList[1])}>Mew</button>
-      <PokemonCard pokemon={selectedPokemon} />
+      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+      <div>
+        <button onClick={handlePrevious} disabled={pokemonIndex === 0}>
+          Précédent
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={pokemonIndex === pokemonList.length - 1}
+        >
+          Suivant
+        </button>
+      </div>
     </div>
   );
 };
