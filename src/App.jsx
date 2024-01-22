@@ -1,11 +1,11 @@
-import PokemonCard from "./PokemonCard";
-import PokemonButtonList from "./PokemonButtonList";
+import "./App.css";
+import PokemonCard from "./components/PokemonCard";
 
 function App() {
 
   return (
     <div>
-       <PokemonButtonList />
+      <PokemonCard />
     </div>
   );
 }
